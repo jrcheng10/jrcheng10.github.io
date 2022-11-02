@@ -23,7 +23,6 @@ library(ggridges)
 
 ```{r import}
 data("instacart")
-# data("rest_inspec")
 ```
 
 Column {data-width=600}
@@ -50,7 +49,7 @@ Column {data-width=400}
 
 ### Purchase Times for Top Alcoholic Drinks Ordered on Instacart
 
-```{r ridgeplot}
+```{r ridgeplot, fig.width = 8}
 alcohol = instacart %>%
   filter(department == "alcohol") %>%
   group_by(product_name) %>%
@@ -73,13 +72,13 @@ instacart %>%
     x = "Time of Day",
     y = "Alcoholic Drink"
   ) +
-  viridis::scale_fill_viridis(discrete = TRUE)
+  viridis::scale_fill_viridis(discrete = TRUE) +
+  theme(legend.position = "bottom",
+        legend.title = element_blank())
 ```
 
 ### Chart C
 
 ```{r geom_line}
-# momofuku scores over time
-
 
 ```
