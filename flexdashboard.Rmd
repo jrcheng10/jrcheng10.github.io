@@ -4,6 +4,13 @@ output:
   flexdashboard::flex_dashboard:
     orientation: columns
     vertical_layout: fill
+    navbar:
+      - {title: "Home", href: https://jrcheng10.github.io/, align: left}
+      - {title: "About", href: about.html, align: right }
+      - {icon: fa-envelope, href: mailto:<cheng.john.r@gmail.com>, align: right }
+      - {icon: fa-github, href: https://github.com/jrcheng10/, align: right }
+      - {icon: fa-linkedin, href: https://www.linkedin.com/in/john-c-843a2a37/, align: right }
+
 ---
 
 ```{r setup, include=FALSE}
@@ -14,17 +21,25 @@ library(flexdashboard)
 ```
 
 ```{r import}
-data("rest_inspec")
+data("instacart")
+# data("rest_inspec")
 ```
-
 
 Column {data-width=650}
 -----------------------------------------------------------------------
 
 ### Chart A
 
-```{r scatterplot}
-
+```{r barplot}
+instacart %>%
+  filter(aisle == "tea") %>%
+  group_by(product_name) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count)) %>%
+  head(15) %>%
+  mutate(product_name = fct_reorder(product_name, count, .desc = TRUE)) %>% 
+  plot_ly(x = ~product_name, y = ~count, color = ~product_name, type = "bar", colors = "viridis") %>% 
+  layout(xaxis = list(tickangle = 315))
 ```
 
 Column {data-width=350}
@@ -34,10 +49,14 @@ Column {data-width=350}
 
 ```{r boxplot}
 
+# frequency distribution of select items through the day
+
 ```
 
 ### Chart C
 
-```{r barplot}
+```{r geom_line}
+# momofuku scores over time
+
 
 ```
