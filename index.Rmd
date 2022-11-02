@@ -12,4 +12,4 @@ I am a first-year student in the Master of Science (M.S.) in Biostatistics progr
 
 ### Projects
 
-[This](flexdashboard.html) is a flexdashboard I recently created in `plotly`, consisting of various data visualizations rendered from Restaurant Inspection Results records made available by the New York City Department of Health and Mental Hygience (DOHMH). 
+[This](flexdashboard.html) is a flexdashboard I recently created in `plotly`, consisting of various data visualizations rendered from the Instacart Online Grocery Shopping Dataset (2017).
