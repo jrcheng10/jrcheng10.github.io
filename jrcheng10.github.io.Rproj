@@ -11,3 +11,6 @@ Encoding: UTF-8
 
 RnwWeave: Sweave
 LaTeX: pdfLaTeX
+
+BuildType: Website
+WebsitePath: ~/Documents/Graduate_School/2022_2_Fall/Data_Science_I/jrcheng10.github.io
