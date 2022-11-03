@@ -25,7 +25,7 @@ library(ggplot2)
 data("instacart")
 ```
 
-Column {data-width=600}
+Column {data-width=500}
 -----------------------------------------------------------------------
 
 ### Most Popular Tea Brands on Instacart
@@ -44,13 +44,13 @@ instacart %>%
          legend = list(font = list(size = 10)))
 ```
 
-Column {data-width=400}
+Column {data-width=500}
 -----------------------------------------------------------------------
 
 ### Distribution of Purchase Times for Top Alcoholic Drinks on Instacart
 
 ```{r density_plot, fig.width = 8}
-alcohol = instacart %>%
+top_alcohols = instacart %>%
   filter(department == "alcohol") %>%
   group_by(product_name) %>%
   summarise(count = n()) %>%
@@ -58,7 +58,7 @@ alcohol = instacart %>%
   head(5)
 
 alcohol_times = instacart %>%
-  filter(product_name %in% alcohol$product_name) %>%
+  filter(product_name %in% top_alcohols$product_name) %>%
   group_by(product_name, order_hour_of_day) %>%
   summarise(count = n()) %>%
   ggplot(aes(x = order_hour_of_day, fill = product_name)) +
@@ -76,8 +76,23 @@ ggplotly(alcohol_times) %>%
          yaxis = list(title = list(text = "Density", font = list(size = 13))))
 ```
 
-### Average Repeat Order Count for Top Ice Cream Brands on Instacart
+### Mean and Dispersion of Order Times for Top Aisles on Instacart
 
 ```{r box_plot}
+top_aisles = instacart %>%
+  group_by(aisle) %>%
+  summarise(count = n()) %>%
+  arrange(desc(count)) %>%
+  head(8)
 
+instacart %>% 
+  filter(aisle %in% top_aisles$aisle) %>%
+  mutate(aisle = fct_reorder(aisle, order_hour_of_day)) %>%
+  plot_ly(y = ~order_hour_of_day, color = ~aisle, type = "box", colors = "viridis") %>% 
+  layout(xaxis = list(tickangle = 315, title = "Aisle", tickfont = list(size = 9)),
+         yaxis = list(title = "Time of Day",
+           tickvals = c(3, 6, 9, 12, 15, 18, 21),
+           ticktext = c("3am", "6am", "9am", "12pm", "3pm", "6pm", "9pm"),
+           tickfont = list(size = 9)),
+         legend = list(font = list(size = 10)))
 ```

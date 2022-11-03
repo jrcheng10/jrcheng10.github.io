@@ -12,4 +12,4 @@ I am a first-year student in the Master of Science (M.S.) in Biostatistics progr
 
 ### Projects
 
-[This](flexdashboard.html) is a flexdashboard I recently created in `plotly`, consisting of various data visualizations rendered from the Instacart Online Grocery Shopping Dataset (2017).
+[This](flexdashboard.html) is a flexdashboard I recently created in `plotly`, consisting of various data visualizations (i.e. barplot, density plot, and boxplot) rendered from the Instacart Online Grocery Shopping Dataset (2017).
