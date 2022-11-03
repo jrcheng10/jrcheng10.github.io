@@ -18,7 +18,7 @@ library(tidyverse)
 library(p8105.datasets)
 library(flexdashboard)
 library(plotly)
-library(ggridges)
+library(ggplot2)
 ```
 
 ```{r import}
@@ -28,9 +28,9 @@ data("instacart")
 Column {data-width=600}
 -----------------------------------------------------------------------
 
-### Most Popular Tea Brands Ordered on Instacart
+### Most Popular Tea Brands on Instacart
 
-```{r barplot}
+```{r bar_plot}
 instacart %>%
   filter(aisle == "tea") %>%
   group_by(product_name) %>%
@@ -40,16 +40,16 @@ instacart %>%
   mutate(product_name = fct_reorder(product_name, count, .desc = TRUE)) %>% 
   plot_ly(x = ~product_name, y = ~count, color = ~product_name, type = "bar", colors = "viridis") %>% 
   layout(xaxis = list(tickangle = 315, title = "Tea Brand"),
-         yaxis = list(title = "Order Count"))
-
+         yaxis = list(title = "Order Count"),
+         legend = list(font = list(size = 10)))
 ```
 
 Column {data-width=400}
 -----------------------------------------------------------------------
 
-### Purchase Times for Top Alcoholic Drinks Ordered on Instacart
+### Distribution of Purchase Times for Top Alcoholic Drinks on Instacart
 
-```{r ridgeplot, fig.width = 8}
+```{r density_plot, fig.width = 8}
 alcohol = instacart %>%
   filter(department == "alcohol") %>%
   group_by(product_name) %>%
@@ -57,28 +57,27 @@ alcohol = instacart %>%
   arrange(desc(count)) %>%
   head(5)
 
-instacart %>%
+alcohol_times = instacart %>%
   filter(product_name %in% alcohol$product_name) %>%
   group_by(product_name, order_hour_of_day) %>%
   summarise(count = n()) %>%
-  ggplot(aes(x = order_hour_of_day, y = fct_reorder(product_name, order_hour_of_day, .desc = TRUE), fill = product_name)) +
-  geom_density_ridges(alpha = .4) + 
+  ggplot(aes(x = order_hour_of_day, fill = product_name)) +
+  geom_density(alpha = .5) +
   scale_x_continuous(
     breaks = c(3, 6, 9, 12, 15, 18, 21),
     labels = c("3am", "6am", "9am", "12pm", "3pm", "6pm", "9pm"),
     limits = c(0, 23)
 ) +
-  labs(
-    x = "Time of Day",
-    y = "Alcoholic Drink"
-  ) +
-  viridis::scale_fill_viridis(discrete = TRUE) +
-  theme(legend.position = "bottom",
-        legend.title = element_blank())
+  viridis::scale_fill_viridis(discrete = TRUE)
+
+ggplotly(alcohol_times) %>% 
+  layout(legend = list(title = list(text = "")),
+         xaxis = list(title = list(text = "Time of Day", font = list(size = 13))),
+         yaxis = list(title = list(text = "Density", font = list(size = 13))))
 ```
 
-### Chart C
+### Average Repeat Order Count for Top Ice Cream Brands on Instacart
 
-```{r geom_line}
+```{r box_plot}
 
 ```
