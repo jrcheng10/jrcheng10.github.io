@@ -7,10 +7,6 @@ navbar:
       href: about.html
     - icon: fa-envelope fa-lg
       href: mailto:<cheng.john.r@gmail.com>
-    - icon: fa-github fa-lg
-      href: https://github.com/jrcheng10/
-    - icon: fa-brands fa-linkedin
-      href: https://www.linkedin.com/in/john-c-843a2a37/
 output:
   html_document:
     theme: journal

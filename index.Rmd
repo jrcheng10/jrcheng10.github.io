@@ -8,7 +8,7 @@ output:
 
 ### Welcome!
 
-I am a first-year student in the Master of Science (M.S.) in Biostatistics program, with a specialization in Public Health Data Science, at Columbia University Mailman School of Public Health. I also work full-time as a programmer at Columbia University Irving Medical Center. My professional background and interests are in the areas of domestic health policy, health finance, and academic health research. More details about my experience and education are available [here](about.html).
+I am a first-year student in the Master of Science (M.S.) in Biostatistics program, with a specialization in Public Health Data Science, at Columbia University Mailman School of Public Health. I also work full-time as a programmer at Columbia University Irving Medical Center. My professional background is in the areas of domestic health policy, health finance, and academic health research. More details about my experience and education are available [here](about.html).
 
 ### Projects
 

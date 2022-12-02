@@ -10,13 +10,7 @@ output:
 
 Before coming to the Mailman School of Public Health at Columbia University, I worked as a financial analyst at the New York City Council – Finance Division, providing fiscal and policy oversight for New York City Health + Hospitals and the Test and Trace Corps during the first year of the COVID-19 pandemic. I began my career with the Service Employees International Union (SEIU), where I served for four years as a research analyst supporting union organizing, collective bargaining, and policy advocacy on behalf of healthcare workers across the acute care and long-term care sectors in the United States.
 
-### Education
-
-I studied politics at a liberal arts college in the Midwest, with a focus on international and comparative political economy.
-
-### Skills
-
-I work primarily in R/RStudio, but have some prior experience with Python and SQL. This site was created in R Markdown.
+My work is primarily conducted in R/RStudio, and this site was created in R Markdown.
 
 ### Miscellaneous
 

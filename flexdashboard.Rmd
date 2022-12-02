@@ -8,8 +8,6 @@ output:
       - {title: "Home", href: https://jrcheng10.github.io/, align: left}
       - {title: "About", href: about.html, align: right }
       - {icon: fa-envelope, href: mailto:<cheng.john.r@gmail.com>, align: right }
-      - {icon: fa-github, href: https://github.com/jrcheng10/, align: right }
-      - {icon: fa-linkedin, href: https://www.linkedin.com/in/john-c-843a2a37/, align: right }
 
 ---
 
@@ -56,7 +54,6 @@ top_alcohols = instacart %>%
   summarise(count = n()) %>%
   arrange(desc(count)) %>%
   head(5)
-
 alcohol_times = instacart %>%
   filter(product_name %in% top_alcohols$product_name) %>%
   group_by(product_name, order_hour_of_day) %>%
@@ -69,7 +66,6 @@ alcohol_times = instacart %>%
     limits = c(0, 23)
 ) +
   viridis::scale_fill_viridis(discrete = TRUE)
-
 ggplotly(alcohol_times) %>% 
   layout(legend = list(title = list(text = "")),
          xaxis = list(title = list(text = "Time of Day", font = list(size = 13))),
@@ -84,7 +80,6 @@ top_aisles = instacart %>%
   summarise(count = n()) %>%
   arrange(desc(count)) %>%
   head(8)
-
 instacart %>% 
   filter(aisle %in% top_aisles$aisle) %>%
   mutate(aisle = fct_reorder(aisle, order_hour_of_day)) %>%
@@ -95,4 +90,3 @@ instacart %>%
            ticktext = c("3am", "6am", "9am", "12pm", "3pm", "6pm", "9pm"),
            tickfont = list(size = 9)),
          legend = list(font = list(size = 10)))
-```
